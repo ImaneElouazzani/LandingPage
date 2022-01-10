@@ -6,15 +6,28 @@ let imgBtn = document.querySelector('.responsive-nav-btn img')
 
 btnNav.addEventListener('click', () => {
     listeNav.classList.toggle('active-nav')
-    if(imgBtn.src.includes('menu')){
-        imgBtn.src = './ressources/croix.svg';
-        imgBtn.style.width = "30px";
-        imgBtn.style.height = "30px";
+    if (window.location.href.includes('index')) {
+        if (imgBtn.src.includes('menu')) {
+            imgBtn.src = './ressources/croix.svg';
+            imgBtn.style.width = "30px";
+            imgBtn.style.height = "30px";
+        } else {
+            imgBtn.src = './ressources/menu.svg';
+            imgBtn.style.width = "40px";
+            imgBtn.style.height = "40px";
+        }
     } else {
-        imgBtn.src = './ressources/menu.svg';
-        imgBtn.style.width = "40px";
-        imgBtn.style.height = "40px";
+        if (imgBtn.src.includes('menu')) {
+            imgBtn.src = '../ressources/croix.svg';
+            imgBtn.style.width = "30px";
+            imgBtn.style.height = "30px";
+        } else {
+            imgBtn.src = '../ressources/menu.svg';
+            imgBtn.style.width = "40px";
+            imgBtn.style.height = "40px";
+        }
     }
+
 })
 
 // FAQ 
@@ -22,10 +35,10 @@ btnNav.addEventListener('click', () => {
 const allCross = document.querySelectorAll('.panneau-visible img')
 
 allCross.forEach(logo => {
-    logo.addEventListener('click', function() {
+    logo.addEventListener('click', function () {
         const height = this.parentNode.parentNode.childNodes[3].scrollHeight
         const currentChoice = this.parentNode.parentNode.childNodes[3]
-        if(this.src.includes('plus')) {
+        if (this.src.includes('plus')) {
             this.src = "/ressources/minus.svg"
             currentChoice.style.height = height + 40 + "px"
             currentChoice.style.opacity = 1
